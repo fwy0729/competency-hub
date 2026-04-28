@@ -1,0 +1,41 @@
+---
+const points = [
+  {
+    number: '16',
+    unit: '个学科',
+    desc: '2022新课标全部以核心素养为主线重构',
+    source: '教育部',
+    color: 'text-primary',
+  },
+  {
+    number: '44%',
+    unit: '核心技能',
+    desc: '将在5年内被AI改变',
+    source: '世界经济论坛',
+    color: 'text-alert',
+  },
+  {
+    number: '24.6%',
+    unit: '青少年',
+    desc: '存在抑郁风险，学业压力是首要压力源',
+    source: '中科院心理研究所',
+    color: 'text-alert',
+  },
+];
+---
+<section class="py-16 md:py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {points.map(p => (
+        <div class="card text-center group hover:shadow-md transition-shadow">
+          <div class={`text-5xl md:text-6xl font-black ${p.color} mb-2`}>
+            {p.number}
+          </div>
+          <div class="text-lg font-semibold text-text mb-2">{p.unit}</div>
+          <p class="text-text-light text-sm leading-relaxed mb-3">{p.desc}</p>
+          <span class="text-xs text-gray-400">数据来源：{p.source}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

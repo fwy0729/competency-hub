@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+
+const phases = [
+  {
+    icon: '🎯',
+    title: '选题：找到真实问题',
+    color: 'border-l-primary',
+    tips: [
+      '好问题的三个标准：真实存在、可探究、需要跨学科',
+      '从学生身边出发：校园午餐浪费、社区噪音、校门口交通拥堵',
+      '避免：假问题、纯知识性问题、没有真实受众的问题',
+    ],
+    case: '西城某小学以校门口交通拥堵为切入点，学生分组调研流量数据、采访交警、设计方案，最终提出的配时优化方案被街道采纳。',
+  },
+  {
+    icon: '📋',
+    title: '设计：目标 → 任务 → 评价',
+    color: 'border-l-accent',
+    tips: [
+      '逆向设计：先想学生最终要展示什么成果',
+      '拆解任务链：大任务分解为可操作的子任务',
+      '嵌入评价：每个环节都有评价标准（量规先行）',
+    ],
+    case: '项目设计从"学生要提交一份配时优化报告"倒推，拆解为：数据采集周→分析建模周→方案设计周→汇报展示周，每周有明确的产出和评价标准。',
+  },
+  {
+    icon: '🏫',
+    title: '实施：课堂落地',
+    color: 'border-l-primary',
+    tips: [
+      '教师角色转变：从讲授者到引导者、资源提供者',
+      '学生分组策略：异质分组，明确角色分工',
+      '时间管理：课内精讲 + 课外探究结合',
+    ],
+    case: '教师不再站在讲台上讲40分钟，而是"发布任务→提供资源→巡回指导→组织汇报"。学生每周有固定的项目时间，课外自主调研。',
+  },
+  {
+    icon: '🔄',
+    title: '复盘：看见成长',
+    color: 'border-l-accent',
+    tips: [
+      '学生反思：用"我学到了…我改变了…我还想知道…"引导',
+      '教师复盘：什么有效？什么要改？下次怎么迭代？',
+      '成果外化：让学生的作品被真实世界看见',
+    ],
+    case: '学生在复盘中写道："我以前觉得数学就是做题，现在发现数学可以解决真正的问题。"教师发现，参与项目后学生的课堂参与度显著提升。',
+  },
+];
+---
+<BaseLayout title="从零启动一个跨学科项目">
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-primary/5 via-white to-accent/5 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="section-title">从零启动一个<span class="text-primary">跨学科项目</span></h1>
+      <p class="section-subtitle mx-auto">
+        不需要轰轰烈烈的改革。从一个真实问题开始，走完四个阶段，你就已经迈出了第一步。
+      </p>
+    </div>
+  </section>
+
+  <!-- Phases -->
+  {phases.map((p, i) => (
+    <section class={`py-12 md:py-16 ${i % 2 === 0 ? 'bg-white' : 'bg-bg'}`}>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white text-sm font-bold shrink-0">
+            {i + 1}
+          </span>
+          <span class="text-3xl">{p.icon}</span>
+          <h2 class="text-2xl font-bold text-text">{p.title}</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Tips -->
+          <div class="card">
+            <h3 class="font-semibold text-text mb-4">💡 要点</h3>
+            <ul class="space-y-3">
+              {p.tips.map(t => (
+                <li class="flex items-start gap-2 text-text-light text-sm leading-relaxed">
+                  <span class="text-primary mt-0.5 shrink-0">•</span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Case -->
+          <div class={`card border-l-4 ${p.color}`}>
+            <h3 class="font-semibold text-text mb-3">🏫 西城某小学</h3>
+            <p class="text-text-light text-sm leading-relaxed">{p.case}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <CTA
+    title="一个项目是起点，不是终点"
+    primary={{ label: '🏫 学校如何系统推进', href: '/scale' }}
+    secondary={{ label: '📚 查看资源库', href: '/resources' }}
+  />
+</BaseLayout>

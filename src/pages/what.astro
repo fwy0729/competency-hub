@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+
+const dimensions = [
+  {
+    icon: '📚',
+    title: '文化基础',
+    subtitle: '人文底蕴 · 科学精神',
+    desc: '学生在学习、理解、运用人文和科学领域的知识和技能中形成的基本能力、情感态度和价值取向。',
+  },
+  {
+    icon: '🌱',
+    title: '自主发展',
+    subtitle: '学会学习 · 健康生活',
+    desc: '学生在认识自我、发展身心、规划人生等方面表现出的基本能力，包括学习意识和自我管理。',
+  },
+  {
+    icon: '🤝',
+    title: '社会参与',
+    subtitle: '责任担当 · 实践创新',
+    desc: '学生在处理与社会、国家、国际等关系中所形成的情感态度、价值取向和行为方式。',
+  },
+];
+
+const comparisons = [
+  { trad: '记住知识', mod: '运用知识解决真实问题' },
+  { trad: '标准答案', mod: '多元方案与创新' },
+  { trad: '教师中心讲授', mod: '学生中心探究' },
+  { trad: '分科独立教学', mod: '跨学科融合学习' },
+  { trad: '终结性纸笔考试', mod: '过程性成长评价' },
+];
+
+const faqs = [
+  {
+    q: '核心素养就是搞素质教育，会降低成绩？',
+    a: '恰恰相反。新加坡和芬兰的实践已经证明：素养教育与学术成绩可以兼得。核心素养不是放弃知识，而是让学生真正"会用"知识——这比死记硬背更高效。',
+  },
+  {
+    q: '我们学校已经在做活动/社团了，还需要了解这个？',
+    a: '活动和社团是好的开始，但核心素养教育是系统性的——它贯穿课程设计、教学实施和评价体系。碎片化的活动有价值，但无法替代系统的素养落地路径。',
+  },
+  {
+    q: '核心素养太抽象，不知道怎么落地？',
+    a: '这正是这个知识站要解决的问题。我们提供从"一个项目"到"全校推进"的完整路径，附带真实案例和工具模板。从最小行动开始，不需要一步到位。',
+  },
+];
+---
+<BaseLayout title="核心素养到底是什么">
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-primary/5 via-white to-accent/5 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="section-title">核心素养到底<span class="text-primary">是什么</span></h1>
+      <p class="section-subtitle mx-auto">
+        一句话：核心素养是学生适应终身发展和社会发展需要的<span class="font-semibold text-text">必备品格和关键能力</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Three Dimensions -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl font-bold text-center mb-10">三个维度，六大素养</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {dimensions.map(d => (
+          <div class="card text-center">
+            <span class="text-4xl mb-4 block">{d.icon}</span>
+            <h3 class="text-xl font-bold mb-1">{d.title}</h3>
+            <p class="text-sm text-primary font-medium mb-3">{d.subtitle}</p>
+            <p class="text-sm text-text-light leading-relaxed">{d.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="py-16 bg-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl font-bold text-center mb-10">传统教学 vs 素养教学</h2>
+      <div class="card overflow-hidden">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-gray-100">
+              <th class="text-left py-4 px-4 text-text-light font-medium">传统教学</th>
+              <th class="text-center py-4 px-2">→</th>
+              <th class="text-left py-4 px-4 text-primary font-medium">素养教学</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisons.map((c, i) => (
+              <tr class={i % 2 === 0 ? 'bg-gray-50/50' : ''}>
+                <td class="py-3 px-4 text-text-light">{c.trad}</td>
+                <td class="py-3 px-2 text-center text-gray-300">→</td>
+                <td class="py-3 px-4 text-text font-medium">{c.mod}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl font-bold text-center mb-10">常见误区</h2>
+      <div class="space-y-4">
+        {faqs.map(f => (
+          <details class="card group">
+            <summary class="cursor-pointer font-semibold text-text list-none flex items-center justify-between">
+              <span>❓ {f.q}</span>
+              <span class="text-primary group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-4 text-text-light leading-relaxed pl-4 border-l-2 border-primary/30">
+              {f.a}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Rubric Placeholder -->
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="card bg-accent/5 border-dashed border-2 border-accent/30 text-center">
+        <span class="text-4xl block mb-3">📐</span>
+        <h3 class="text-lg font-bold mb-2">量规模板</h3>
+        <p class="text-text-light">即将上线，敬请期待</p>
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="想从一个项目开始？"
+    primary={{ label: '🛠️ 从一个项目开始', href: '/start' }}
+    secondary={{ label: '🏫 学校如何系统推进', href: '/scale' }}
+  />
+</BaseLayout>

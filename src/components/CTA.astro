@@ -1,0 +1,32 @@
+---
+interface Props {
+  title?: string;
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+}
+
+const {
+  title = '不是"要不要做"的问题，而是"怎么尽快做好"的问题',
+  primary = { label: '📖 了解核心素养是什么', href: '/what' },
+  secondary = { label: '🛠️ 从一个项目开始', href: '/start' },
+} = Astro.props;
+---
+<section class="py-16 md:py-20 bg-gradient-to-r from-primary to-primary-dark text-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 leading-snug">{title}</h2>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href={primary.href}
+        class="w-full sm:w-auto px-8 py-4 bg-white text-primary rounded-xl font-semibold hover:bg-gray-50 transition-colors"
+      >
+        {primary.label}
+      </a>
+      <a
+        href={secondary.href}
+        class="w-full sm:w-auto px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white/10 transition-colors"
+      >
+        {secondary.label}
+      </a>
+    </div>
+  </div>
+</section>

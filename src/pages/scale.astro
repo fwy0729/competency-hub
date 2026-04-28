@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+
+const phases = [
+  {
+    stage: '第一阶段',
+    name: '播种子',
+    duration: '1个学期',
+    color: 'bg-primary',
+    tasks: [
+      '选1-2个班做试点，降低试错成本',
+      '开展1个完整的跨学科项目（按"选题→设计→实施→复盘"走一遍）',
+      '组织试点教师小范围培训（2-3次工作坊）',
+      '建立校内项目复盘机制',
+    ],
+    goal: '让一部分老师先跑通流程，积累信心和经验',
+  },
+  {
+    stage: '第二阶段',
+    name: '扎根基',
+    duration: '1个学年',
+    color: 'bg-accent',
+    tasks: [
+      '以年级组为单位推进，每个年级至少1个跨学科项目',
+      '建立校本评价体系（量规模板落地）',
+      '学科课程中嵌入素养目标，不是另起炉灶',
+      '定期组织跨年级分享会，形成校内学习共同体',
+    ],
+    goal: '从"少数人的实验"变成"多数人的实践"',
+  },
+  {
+    stage: '第三阶段',
+    name: '成体系',
+    duration: '2-3年',
+    color: 'bg-text',
+    tasks: [
+      '全校推进，形成校本跨学科课程体系',
+      '建立教师成长路径（新手→熟手→骨干→引领者）',
+      '形成学校特色课程品牌',
+      '对外输出经验，成为区域标杆',
+    ],
+    goal: '核心素养教育成为学校的核心竞争力',
+  },
+];
+
+const pitfalls = [
+  {
+    pit: '一上来就想全校铺开',
+    fix: '先小范围试点，跑通流程再扩展。贪多嚼不烂。',
+  },
+  {
+    pit: '把跨学科当成额外负担',
+    fix: '不是另起炉灶，而是在现有课程中嵌入素养目标。用10%课时撬动改变。',
+  },
+  {
+    pit: '只关注学生，忽略教师',
+    fix: '教师是变革的核心。给他们培训、支持和试错空间。教师成长了，学生自然成长。',
+  },
+  {
+    pit: '追求形式花哨，忽略实质',
+    fix: '跨学科不是"拼盘"，核心是让学生经历"发现问题→解决问题"的完整过程。',
+  },
+];
+---
+<BaseLayout title="学校如何系统推进核心素养">
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-primary/5 via-white to-accent/5 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="section-title">学校如何<span class="text-primary">系统推进</span></h1>
+      <p class="section-subtitle mx-auto">
+        三阶段路线图：从试点到全校，循序渐进
+      </p>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="space-y-8">
+        {phases.map((p, i) => (
+          <div class="relative">
+            {/* timeline line */}
+            {i < phases.length - 1 && (
+              <div class="absolute left-5 top-16 bottom-0 w-0.5 bg-gray-200 hidden md:block"></div>
+            )}
+            <div class="card relative">
+              <div class="flex items-center gap-4 mb-4">
+                <span class={`flex items-center justify-center w-10 h-10 rounded-full ${p.color} text-white text-sm font-bold shrink-0`}>
+                  {i + 1}
+                </span>
+                <div>
+                  <span class="text-xs font-semibold px-2 py-0.5 bg-gray-100 rounded-full text-text-light">{p.stage}</span>
+                  <h2 class="text-2xl font-bold text-text mt-1">{p.name} <span class="text-base font-normal text-text-light">· {p.duration}</span></h2>
+                </div>
+              </div>
+
+              <ul class="space-y-2 mb-4 ml-0 md:ml-14">
+                {p.tasks.map(t => (
+                  <li class="flex items-start gap-2 text-text-light text-sm leading-relaxed">
+                    <span class="text-primary mt-0.5 shrink-0">✓</span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+
+              <div class="ml-0 md:ml-14 bg-primary/5 rounded-xl p-4 border-l-4 border-primary">
+                <p class="text-sm text-text font-medium">🎯 目标：{p.goal}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pitfalls -->
+  <section class="py-16 bg-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="section-title text-center">常见踩坑与避坑</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+        {pitfalls.map(p => (
+          <div class="card">
+            <div class="flex items-start gap-3 mb-3">
+              <span class="text-alert text-xl shrink-0">⚠️</span>
+              <h3 class="font-semibold text-alert">{p.pit}</h3>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-primary text-xl shrink-0">💡</span>
+              <p class="text-text-light text-sm leading-relaxed">{p.fix}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="准备好资源，让落地更顺畅"
+    primary={{ label: '📚 查看资源库', href: '/resources' }}
+    secondary={{ label: '📖 再看一遍核心素养', href: '/what' }}
+  />
+</BaseLayout>

@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+
+const sections = [
+  {
+    icon: '🔴',
+    tag: '政策',
+    title: '不是建议，是刚性要求',
+    points: [
+      '2022年新课标：16个学科全部以核心素养为主线重构教学目标',
+      '跨学科主题学习要求各学科不低于10%课时',
+      '《深化新时代教育评价改革总体方案》明确禁止唯分数、唯升学率评价学校',
+      '中考综合素质评价纳入录取参考，高考命题从"考知识"转向"考素养"',
+    ],
+    highlight: '学校评价标准正在根本性改变，拒绝核心素养教育将面临评估风险。',
+  },
+  {
+    icon: '🟠',
+    tag: '社会',
+    title: 'AI正在淘汰"知识搬运工"式教育',
+    points: [
+      '世界经济论坛预测：到2027年，全球44%的工人核心技能将被改变',
+      '最被需求的技能——分析性思维、创造性思维、好奇心——全部属于核心素养范畴',
+      '当ChatGPT能在3秒内完成学生3小时的知识检索，"记住知识"不再是竞争优势',
+      '2024年高校毕业生1179万人，但企业反映"招不到合适的人"，核心矛盾是综合素质不足',
+    ],
+    highlight: '教育必须转向：让学生成为AI无法替代的人。',
+  },
+  {
+    icon: '🟠',
+    tag: '学生',
+    title: '教育正在伤害孩子',
+    points: [
+      '中科院报告：中国青少年抑郁风险检出率24.6%，学业压力是首要压力源',
+      '北京大学调研：初中生中"对学习真正感兴趣"的比例不足30%',
+      '"空心病"现象：学生不知道为什么学习、缺乏意义感',
+      '2023年教育部等17部门联合发文，将学生心理健康上升至国家战略高度',
+    ],
+    highlight: '核心素养教育强调学习的意义感、内在动机和社会情感能力，是解决学生心理危机的教育路径。',
+  },
+  {
+    icon: '🟡',
+    tag: '国际',
+    title: '新加坡和芬兰已经证明——素养与高分可以兼得',
+    points: [
+      'PISA 2022新加坡蝉联三项全球第一，其21世纪素养框架是国家战略',
+      '芬兰通过现象教学保持Top 10成绩，学生幸福指数全球前列',
+      'OECD《教育2030》明确：教育要从"知识传递"转向"学生代理"和"变革性能力"',
+      '美国超5万所中小学已实施项目式学习（PBL）',
+    ],
+    highlight: '追求核心素养不是牺牲成绩，而是更高效地获得成绩。',
+  },
+];
+---
+<BaseLayout title="为什么公立学校必须做核心素养">
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-alert/5 via-white to-primary/5 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="section-title">为什么公立学校<span class="text-alert">必须</span>做核心素养</h1>
+      <p class="section-subtitle mx-auto">
+        从政策、社会、学生、国际四个维度，看清这场不可避免的教育变革
+      </p>
+    </div>
+  </section>
+
+  <!-- Sections -->
+  {sections.map((s, i) => (
+    <section class={`py-12 md:py-16 ${i % 2 === 0 ? 'bg-white' : 'bg-bg'}`}>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl">{s.icon}</span>
+            <span class="text-xs font-semibold px-3 py-1 bg-gray-100 rounded-full text-text-light uppercase">{s.tag}</span>
+          </div>
+          <h2 class="text-2xl font-bold text-text mb-6">{s.title}</h2>
+          <ul class="space-y-3 mb-6">
+            {s.points.map(p => (
+              <li class="flex items-start gap-3">
+                <span class="text-primary mt-1 shrink-0">✓</span>
+                <span class="text-text-light leading-relaxed">{p}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="bg-primary/5 rounded-xl p-4 border-l-4 border-primary">
+            <p class="text-text font-medium">{s.highlight}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <CTA
+    title="了解核心素养到底是什么"
+    primary={{ label: '📖 核心素养是什么', href: '/what' }}
+    secondary={{ label: '🛠️ 从一个项目开始', href: '/start' }}
+  />
+</BaseLayout>

@@ -1,0 +1,63 @@
+---
+const navItems = [
+  { label: '为什么要做', href: '/why' },
+  { label: '是什么', href: '/what' },
+  { label: '怎么启动', href: '/start' },
+  { label: '怎么推进', href: '/scale' },
+  { label: '资源库', href: '/resources' },
+];
+---
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 text-xl font-bold text-primary">
+        <span class="text-2xl">🌱</span>
+        <span>素养启航</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-1">
+        {navItems.map(item => (
+          <a
+            href={item.href}
+            class="px-4 py-2 rounded-lg text-sm font-medium text-text-light hover:text-primary hover:bg-primary/5 transition-colors"
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+        aria-label="菜单"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class="block px-4 py-3 rounded-lg text-sm font-medium text-text-light hover:text-primary hover:bg-primary/5 transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>
